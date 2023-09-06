@@ -2,30 +2,32 @@
   <h1 class="text-indigo-700 text-2xl mb-4">📼 Findstream</h1>
   <p>A better search for Twitch streams</p>
   <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-    <div class="mb-4 flex">
-      <div class="w-1/2 pr-2">
-        <label for="category" class="block text-gray-700 font-bold">🏷️</label>
-        <%= select_tag "category", options_for_select(['Art', 'Beauty & Body Art', 'Food & Drink', 'Just Chatting', 'Makers & Crafting', 'Music', 'Retro', 'Science & Technology', 'Software and Game Development', 'Talk Shows & Podcast']), class: "w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-indigo-500" %>
-      </div>
-
-      <div class="w-1/2 pl-2">
-        <label for="language" class="block text-gray-700 font-bold">🎤</label>
-        <%= select_tag "language", options_for_select(['English', 'German', 'Italian', 'Japanese', 'Korean', 'Russian', 'Spanish']), class: "w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-indigo-500" %>
-      </div>
-    </div>
-
-    <div class="mb-4 relative">
-      <label for="name" class="block text-gray-700 font-bold mb-2"></label>
-      <div class="relative rounded-lg shadow-sm">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" id="search-icon">
-          <span class="text-gray-500">🔍</span>
+    <%= form_tag('streams', method: :get) do %>
+      <div class="mb-4 flex">
+        <div class="w-1/2 pr-2">
+          <label for="category" class="block text-gray-700 font-bold">🏷️</label>
+          <%= select_tag "category", options_for_select(['Art', 'Beauty & Body Art', 'Food & Drink', 'Just Chatting', 'Makers & Crafting', 'Music', 'Retro', 'Science & Technology', 'Software and Game Development', 'Talk Shows & Podcast']), class: "w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-indigo-500" %>
         </div>
-        <%= text_field_tag "name", params[:name], class: "w-full px-3 py-2 pl-8 border rounded-lg focus:outline-none focus:border-indigo-500" %>
-      </div>
-    </div>
 
-    <div class="text-center">
-      <%= submit_tag "Search", class: "bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700" %>
-    </div>
+        <div class="w-1/2 pl-2">
+          <label for="language" class="block text-gray-700 font-bold">🎤</label>
+          <%= select_tag "language", options_for_select(['English', 'German', 'Italian', 'Japanese', 'Korean', 'Russian', 'Spanish']), class: "w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:border-indigo-500" %>
+        </div>
+      </div>
+
+      <div class="mb-4 relative">
+        <label for="name" class="block text-gray-700 font-bold mb-2"></label>
+        <div class="relative rounded-lg shadow-sm">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" id="search-icon">
+            <span class="text-gray-500">🔍</span>
+          </div>
+          <%= text_field_tag "name", params[:name], class: "w-full px-3 py-2 pl-8 border rounded-lg focus:outline-none focus:border-indigo-500" %>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <%= submit_tag "Search", class: "bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-indigo active:bg-indigo-700" %>
+      </div>
+    <% end %>
   </div>
 </div>
