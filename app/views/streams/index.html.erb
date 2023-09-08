@@ -1,9 +1,34 @@
-<p> ahweua </p>
+<ul class="flex flex-wrap">
+  <% @streams["data"].each do |stream| %>
+    <li class="w-1/3 mb-8 px-2"> 
+      <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden card"> 
+        <%= image_tag stream["thumbnail_url"].gsub(/\{width\}x\{height\}/, "640x360"), alt: "Live Thumb", class: "w-full h-72 object-cover" %>
+        
 
-<ul>
-  <% @streams["data"].each do |stream| %> 
-    <li> 
-      <%= stream["game_name"] %>  
-    </li> 
+        <div class="p-4"> 
+          <h2 class="text-xl font-semibold text-gray-800 title"><%= stream["title"] %></h2>
+          <p class="text-gray-600 truncate">@<%= stream["user_name"] %></p>
+          <p class="mt-2 text-sm text-gray-600 truncate">🎤 Speaking: <%= stream["language"] %></p>
+          <p class="mt-2 text-sm text-gray-600 truncate">⏱️ Streaming for: <%= stream["started_at"] %></p>
+          <p class="mt-2 text-sm text-gray-600 truncate">👀 With <%= stream["viewer_count"] %> viewers</p>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ul>
+
+<style>
+  .card {
+    height: 500px; 
+  }
+</style>
+
+<script>
+$(document).ready(function() {
+  $(".card").each(function() {
+    var cardHeight = $(this).height();
+    var title = $(this).find(".title");
+    title.css("max-height", cardHeight - 20); 
+  });
+});
+</script>
