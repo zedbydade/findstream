@@ -18,6 +18,11 @@ gem "puma", "~> 5.0"
 # Use http_party because i want fun again
 gem "httparty"
 
+gem "time_diff"
+
+gem 'string-similarity'
+
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
