@@ -24,4 +24,8 @@ module StreamsHelper
     hour_string = diff[:hour] == 1 ? "hour" : "hours"
     "#{diff[:hour]} #{hour_string} and #{diff[:minute]} minutes"
   end
+
+  def get_link(username)
+    "https://www.twitch.tv/#{username}"
+  end
 end
